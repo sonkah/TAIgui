@@ -1,0 +1,31 @@
+nb-layout-column {
+  background-image: url('/../../assets/images/tlo.jpg');
+  background-position: 50% 80%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+
+  .row {
+    //justify-content: center;
+    display: block;
+    text-align: center;
+    padding-bottom: 15px;
+
+
+    h1 {
+      letter-spacing: 10px;
+      color:  rgb(253, 248, 255);
+      font-size: 60px;
+      font-weight: 600;
+    }
+    p {
+      font-size: 30px;
+      color:  rgb(253, 240, 255);
+    }
+
+    .btn-home {
+      width: 180px;
+    }
+  }
+}
