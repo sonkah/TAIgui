@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { CalendarComponent } from './calendar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewTaskComponent } from './new-task/new-task.component'
 
 const routes: Routes = [
   {
@@ -18,9 +19,14 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
+      {
+        path: 'new-task',
+        component: NewTaskComponent,
+      }
     ],
   },
-  { path: '**', component: CalendarComponent}
+  { path: '', redirectTo: 'dashboard'},
+  { path: '**', redirectTo: 'dashboard'}
 ];
 
 @NgModule({
