@@ -4,6 +4,7 @@
   </nb-card-header>
   <nb-card-body>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+            <ng-datepicker [(ngModel)]="date"></ng-datepicker>          
             <div class="form-group">
                 <label for="name">Name: </label>
                 <input
@@ -47,7 +48,6 @@
                       >
                   </div>
             </div>
-            <ng-datepicker [(ngModel)]="date"></ng-datepicker>          
                 <div class="row">
                 <div class="container-btn">
                     <button class="btn btn-success" type="submit" id="savebutton">Save</button>
