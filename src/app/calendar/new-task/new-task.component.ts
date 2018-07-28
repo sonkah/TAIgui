@@ -11,6 +11,7 @@ import { Task } from '../../service/task'
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent implements OnInit {
+  date: Date;
   months = [
     { name: "January", id: 0 },
     { name: "February", id: 1},
