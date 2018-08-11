@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, NgForm, Validators } from "@angular/forms";
+import { formatDate } from '@angular/common';
 import { TaskService } from '../../service/task.service';
 import { TaskStatus } from '../../service/taskstatus';
 import { Task } from '../../service/task'
 
 @Component({
-  selector: 'new-task',
-  templateUrl: './new-task.component.html',
-  styleUrls: ['./new-task.component.scss']
+  selector: 'edit-task',
+  templateUrl: './edit-task.component.html',
+  styleUrls: ['./edit-task.component.scss']
 })
-export class NewTaskComponent implements OnInit {
+export class EditTaskComponent implements OnInit {
   months = [
     { name: "January", id: 0 },
     { name: "February", id: 1},
@@ -26,22 +27,43 @@ export class NewTaskComponent implements OnInit {
     { name: "December", id: 11 },
   ];
 
+  editTask: Task;
   createForm: FormGroup;
 
-  constructor(private taskService: TaskService, private router: Router) { }
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+        this.getTask();
+  }
+
+  getTask(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.taskService.getTask(id)
+      .subscribe(task => {
+        this.editTask = task;
         this.createForm = new FormGroup({
             "name": new FormControl("", []),
             "year": new FormControl("", []),
             "month": new FormControl("", []),
             "day": new FormControl("", [])
         });
+        this.createForm.setValue({
+          name: this.editTask.name,
+          year: +formatDate(this.editTask.date, 'y', 'en'),
+          month: +formatDate(this.editTask.date, 'M', 'en'),
+          day: +formatDate(this.editTask.date, 'd', 'en')
+        });
+      });
   }
 
   onSubmit(): void {
-    this.taskService.putTask({ id: 0, taskStatus: TaskStatus    .UNCHECKED, name: this.createForm.value["name"],
-                              date: new Date(this.createForm.value["year"], this.createForm.value["month"], this.createForm.value["day"]), userId: "", category: ""}).subscribe();
+    this.editTask.name = this.createForm.value["name"];
+    this.editTask.date = new Date(this.createForm.value["year"], this.createForm.value["month"], this.createForm.value["day"]);
+    this.taskService.updateTask(this.editTask).subscribe();
     this.router.navigate(["/calendar/dashboard"]);
   }
 

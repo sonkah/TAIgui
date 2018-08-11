@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { CalendarComponent } from './calendar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NewTaskComponent } from './new-task/new-task.component'
+import { NewTaskComponent } from './new-task/new-task.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'new-task',
         component: NewTaskComponent,
+      },
+      {
+        path: 'edit-task/:id',
+        component: EditTaskComponent,
       }
     ],
   },
