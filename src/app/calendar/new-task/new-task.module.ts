@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalendarPageComponent } from './calendar-page.component';
+import { NewTaskComponent } from './new-task.component';
 import { ThemeModule } from '../../@theme/theme.module';
 
 @NgModule({
@@ -8,6 +8,6 @@ import { ThemeModule } from '../../@theme/theme.module';
     CommonModule,
     ThemeModule,
   ],
-  declarations: [CalendarPageComponent]
+  declarations: [NewTaskComponent]
 })
-export class CalendarPageModule { }
+export class NewTaskModule { }

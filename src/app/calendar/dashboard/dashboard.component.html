@@ -1,3 +1,78 @@
-<p>
-  dashboard works!
-</p>
+<nb-card>
+  <nb-card-header>
+    Dashboard
+  </nb-card-header>
+  <nb-card-body>
+    <table _ngcontent-c35="" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Weekdays</th>
+          <th>Tasks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>All</th>
+            <td *ngFor="let task of tasks">{{task.name}}  {{task.date | date : 'EEEE'}}</td>
+        </tr>
+        <tr>
+          <th>Monday</th>
+            <td *ngFor="let task of mon">
+              {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+            </td>
+        </tr>
+        <tr>
+          <th>Tuesday</th>
+              <td *ngFor="let task of tue">
+                {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+              </td>
+        </tr>
+        <tr>
+          <th>Wednesday</th>
+            <td *ngFor="let task of wed">
+                {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+            </td>
+        </tr>
+        <tr>
+          <th>Thursday</th>
+            <td *ngFor="let task of thu">
+                {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+</td>
+        </tr>
+        <tr>
+          <th>Friday</th>
+            <td *ngFor="let task of fri">
+                {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+</td>
+        </tr>
+        <tr>
+          <th>Saturday</th>
+            <td *ngFor="let task of sat">
+                {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+</td>
+        </tr>
+        <tr>
+          <th>Sunday</th>
+            <td *ngFor="let task of sun">
+                {{task.name}}
+              <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+              <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+</td>
+        </tr>
+      </tbody>
+  </table>
+  <button class="btn btn-success" (click)="newTask()">New Task</button>
+  </nb-card-body>
+</nb-card>

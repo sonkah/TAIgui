@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalendarPageComponent } from './calendar-page.component';
+import { EditTaskComponent } from './edit-task.component';
 import { ThemeModule } from '../../@theme/theme.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ThemeModule,
+    ThemeModule 
   ],
-  declarations: [CalendarPageComponent]
+  declarations: [EditTaskComponent]
 })
-export class CalendarPageModule { }
+export class EditTaskModule { }
