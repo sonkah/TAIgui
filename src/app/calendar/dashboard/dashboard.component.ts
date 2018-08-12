@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { TaskService } from '../../service/task.service';
 import { Task } from '../../service/task';
+import { TaskStatus }  from '../../service/taskstatus'
 
 @Component({
   selector: 'dashboard',
@@ -60,5 +61,26 @@ export class DashboardComponent implements OnInit {
 
   newTask(): void {
     this.router.navigate(['/calendar/new-task']);
+  }
+  checkStatus(task: Task) {
+    if(task.taskStatus == TaskStatus.CHECKED){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  checkCancelled(task: Task) {
+    if(task.taskStatus == TaskStatus.CANCELED){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  checkStatus1() {
+      return true;
   }
 }
