@@ -18,7 +18,13 @@
               <tbody>
                 <tr>
                   <td *ngFor="let task of mon">
-                      <nb-checkbox [value]="checkStatus(task)" nbPopover="Hello, how are you today?" nbPopoverMode="hover"></nb-checkbox>
+                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
+                      <ng-template #poopover>
+                          <div>Name: {{task.name}}</div>
+                          <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                          <div>Status: {{task.taskStatus}}</div>
+                          <button class="btn btn-success">hahaha</button>
+                      </ng-template>
                   </td>
                 </tr>
               </tbody>
@@ -32,7 +38,7 @@
               <tbody>
                 <tr>
                     <td *ngFor="let task of tue">
-                        <nb-checkbox [value]="checkStatus(task)"></nb-checkbox>
+                        <nb-checkbox [value]="checkStatus(task)" nbPopover="Hello, how are you today?" nbPopoverMode="hover"></nb-checkbox>
                     </td>
                 </tr>
               </tbody>    
@@ -46,7 +52,7 @@
               <tbody>
                 <tr>
                     <td *ngFor="let task of wed">
-                      <nb-checkbox [value]="checkStatus(task)"></nb-checkbox>
+                      <nb-checkbox [value]="checkStatus(task)" nbPopover="Hello, how are you today?" nbPopoverMode="hover"></nb-checkbox>
                     </td>
                   </tr>
                 </tbody>
@@ -60,7 +66,7 @@
               <tbody>
                 <tr>
                     <td *ngFor="let task of thu">
-                      <nb-checkbox [value]="checkStatus(task)"></nb-checkbox>
+                      <nb-checkbox [value]="checkStatus(task)" nbPopover="Hello, how are you today?" nbPopoverMode="hover"></nb-checkbox>
                     </td>
                   </tr>
                 </tbody>

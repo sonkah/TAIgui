@@ -80,7 +80,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  checkStatus1() {
-      return true;
+  getDetails(task: Task){
+    return "Name: " + task.name + "\n" +
+          "Status: " + task.taskStatus + "<br/>" +
+          "Date: " + task.date + "\n" +
+          ""
   }
 }
