@@ -3,7 +3,7 @@
     Edit
   </nb-card-header>
   <nb-card-body>
-    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="name">Name: </label>
                 <input
@@ -11,49 +11,21 @@
                         class="form-control"
                         id="name"
                         formControlName="name"
-                    >
+                    required>
             </div>
             <div class="row">
-              <div class="form-group">
-                      <label for="year">Year: </label>
-
-                      <input
-                          class="form-control"
-                          type="text"
-                          id="year"
-                          formControlName="year"
-                      >
-                  </div>
-              <div class="form-group">
-                      <label for="month">Month: </label>
-
-                      <select
-                          class="form-control"
-                          id="month"
-                          formControlName="month"
-                      >
-                          <option *ngFor="let month of months" [value]="month.id">{{ month.name }}</option>
-                      </select>
-                  </div>
-
-              <div class="form-group">
-                      <label for="day">Day: </label>
-
-                      <input
-                          class="form-control"
-                          type="text"
-                          id="day"
-                          formControlName="day"
-                      >
-                  </div>
+              <ng-datepicker formControlName="date" [options]="options"></ng-datepicker>
             </div>
-                <div class="row">
-                <div class="container-btn">
-                    <button class="btn btn-success" type="submit" id="savebutton">Save</button>
-                </div>
-                <div class="container-btn">
-                    <button class="btn btn-danger" (click)="onCancel()" id="cancelbutton">Cancel</button>
-                </div>
+            <div class="row">
+              {{ editForm.value.date }}
+            </div>
+            <div class="row">
+              <div class="container-btn">
+                  <button class="btn btn-success" type="submit" id="savebutton" [disabled]="!editForm.valid">Save</button>
+              </div>
+              <div class="container-btn">
+                  <button class="btn btn-danger" (click)="onCancel()" id="cancelbutton">Cancel</button>
+              </div>
             </div>
     </form>
   </nb-card-body>

@@ -12,11 +12,6 @@ import { DatepickerOptions } from 'ng2-datepicker';
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent implements OnInit {
-/*
-  datePickerConfig = {
-    min: new Date(Date.now())
-  }
-*/
   options: DatepickerOptions = {
     firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
     minDate: new Date(Date.now()), // Minimal selectable date
