@@ -28,8 +28,8 @@ export class NewTaskComponent implements OnInit {
 
   ngOnInit() {
         this.createForm = this.formBuilder.group({
-            "name": new FormControl("", []),
-            "date": new Date(Date.now())
+            "name": [''],
+            "date": [new Date(Date.now())]
         });
   }
 
