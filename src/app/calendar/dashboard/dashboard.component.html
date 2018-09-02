@@ -3,6 +3,13 @@
     Dashboard
   </nb-card-header>
   <nb-card-body>
+    <div class="header-container">
+      <div class="week-title">{{weekTitle}}</div>
+      <div>
+        <button class="btn btn-success" (click)="previousWeek()">Previous</button>
+        <button class="btn btn-success" (click)="nextWeek()">Next</button>
+      </div>
+    </div>
     <table _ngcontent-c35="" class="table table-bordered">
       <thead>
         <tr>
@@ -23,7 +30,8 @@
                           <div>Name: {{task.name}}</div>
                           <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                           <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-success">hahaha</button>
+                          <button class="btn btn-success">Edit</button>
+                          <div class="week-title">{{this.weekTitle}}</div>
                       </ng-template>
                   </td>
                 </tr>
@@ -43,7 +51,7 @@
                           <div>Name: {{task.name}}</div>
                           <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                           <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-success">hahaha</button>
+                          <button class="btn btn-success">Edit</button>
                         </ng-template>
                     </td>
                 </tr>
@@ -63,7 +71,7 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">hahaha</button>
+                        <button class="btn btn-success">Edit</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -83,7 +91,7 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">hahaha</button>
+                        <button class="btn btn-success">Edit</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -103,7 +111,7 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">hahaha</button>
+                        <button class="btn btn-success">Edit</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -123,7 +131,7 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">hahaha</button>
+                        <button class="btn btn-success">Edit</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -143,7 +151,7 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">hahaha</button>
+                        <button class="btn btn-success">Edit</button>
                       </ng-template>
                     </td>
                   </tr>
