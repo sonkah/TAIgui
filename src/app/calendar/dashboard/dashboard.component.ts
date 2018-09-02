@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { TaskService } from '../../service/task.service';
 import { Task } from '../../service/task';
+import { TaskStatus }  from '../../service/taskstatus';
+import { Params } from '@angular/router'
+import { THIS_EXPR } from '../../../../node_modules/@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'dashboard',
@@ -20,15 +23,40 @@ export class DashboardComponent implements OnInit {
     fri: Task[];
     sat: Task[];
     sun: Task[];
-  currentWeek: number;
+  weekNumber: number;
+  year: number;
+  weekDate: Date;
+  weekTitle: string = "aaaaaa";
 
-  constructor(private taskService: TaskService, private router: Router) { }
+
+
+  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    /*this.route.queryParams.subscribe(params => {
+      this.weekNumber = params['week'];
+      this.year = params['year'];
+      }); 
+*/
+   
+  }
 
   ngOnInit() {
-    this.currentWeek = +formatDate(new Date(), 'w', 'en');
-    this.getTasks();
+    this.route.params.subscribe((params: Params) => {
+      this.weekNumber = +params['week'];
+      this.year = +params['year'];
+      console.log(this.weekNumber + ' ' + this.year);
+    });
 
+    if (this.weekNumber == null || this.year == null || isNaN(this.year) || isNaN(this.weekNumber)){
+      let d = new Date();
+      this.weekNumber = +formatDate(d, 'w', 'en');
+      this.year = +formatDate(d, 'y', 'en');
+    }
+    this.weekDate = this.getDateOfWeek(this.weekNumber, this.year);
+    this.weekTitle = this.buildTitle(this.weekDate);
+    this.getTasks();
   }
+
   getTasks(): void {
     this.taskService.getTasks().subscribe(
       tasks => {
@@ -38,14 +66,15 @@ export class DashboardComponent implements OnInit {
   }
 
   divByDate(): void {
-    let currentWeekTasks: Task[] = this.tasks.filter(t => this.currentWeek === +formatDate(t.date, 'w', 'en'));
-    this.mon = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Monday");
-    this.tue = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Tuesday");
-    this.wed = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Wednesday");
-    this.thu = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Thursday");
-    this.fri = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Friday");
-    this.sat = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Saturday");
-    this.sun = currentWeekTasks.filter(t => formatDate(t.date, 'EEEE', 'en') == "Sunday");
+    let currentWeekTasks: Task[] = this.tasks.filter(task => this.weekNumber === +formatDate(task.date, 'w', 'en') 
+                                                          && this.year === +formatDate(task.date, 'y', 'en'));
+    this.mon = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Monday");
+    this.tue = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Tuesday");
+    this.wed = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Wednesday");
+    this.thu = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Thursday");
+    this.fri = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Friday");
+    this.sat = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Saturday");
+    this.sun = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Sunday");
   }
 
   delete(task: Task) {
@@ -54,11 +83,66 @@ export class DashboardComponent implements OnInit {
     this.taskService.deleteTask(task.id).subscribe();
   }
 
-   edit(task: Task) {
+  edit(task: Task) {
     this.router.navigate([`/calendar/edit-task/${task.id}`]);
   }
 
   newTask(): void {
     this.router.navigate(['/calendar/new-task']);
+  }
+
+  checkStatus(task: Task) {
+    if(task.taskStatus == TaskStatus.CHECKED){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  checkCancelled(task: Task) {
+    if(task.taskStatus == TaskStatus.CANCELED){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  getDetails(task: Task){
+    return "Name: " + task.name + "\n" +
+          "Status: " + task.taskStatus + "<br/>" +
+          "Date: " + task.date + "\n" +
+          ""
+  }
+
+  buildTitle(date: Date){
+    var title = "" + date.getDate() + "." + (+date.getMonth() + 1) + "." + date.getFullYear() + " - ";
+    date.setDate(date.getDate() + 6);
+    title += date.getDate() + "." + (+date.getMonth() + 1) + "." + date.getFullYear();
+    return title;
+  }
+
+  getDateOfWeek(week : number, year : number) {
+    var day = (1 + (week - 1) * 7);
+    var date = new Date(year, 0, day)
+    
+    date.setDate(date.getDate() - date.getDay())
+    return date;
+  }
+
+  nextWeek() :void {
+    this.weekDate.setDate(this.weekDate.getDate() + 7);
+    let path = `/calendar/dashboard/${this.weekDate.getFullYear()}/${formatDate(this.weekDate, 'w', 'en')}`;
+    console.log(path);
+    this.router.navigate([path]);
+    
+  }
+
+  previousWeek(){
+    this.weekDate.setDate(this.weekDate.getDate() - 7);
+    let path = `/calendar/dashboard/${this.weekDate.getFullYear()}/${formatDate(this.weekDate, 'w', 'en')}`;
+    console.log(path);
+    this.router.navigate([path]);
   }
 }

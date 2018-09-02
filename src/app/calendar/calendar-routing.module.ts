@@ -19,6 +19,12 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        runGuardsAndResolvers: 'always',
+      },
+      {
+        path: 'dashboard/:year/:week',
+        component: DashboardComponent,
+        runGuardsAndResolvers: 'always',
       },
       {
         path: 'new-task',
