@@ -19,6 +19,27 @@
       </thead>
       <tbody>
         <tr>
+          <th>Sunday</th>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                    <td *ngFor="let task of sun">
+                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
+                      <ng-template #poopover>
+                        <div>Name: {{task.name}}</div>
+                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                        <div>Status: {{task.taskStatus}}</div>
+                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                      </ng-template>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
           <th>Monday</th>
           <td>
             <table>
@@ -30,7 +51,8 @@
                           <div>Name: {{task.name}}</div>
                           <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                           <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-success">Edit</button>
+                          <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                          <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
                           <div class="week-title">{{this.weekTitle}}</div>
                       </ng-template>
                   </td>
@@ -51,11 +73,12 @@
                           <div>Name: {{task.name}}</div>
                           <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                           <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-success">Edit</button>
+                          <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                          <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
                         </ng-template>
                     </td>
                 </tr>
-              </tbody>    
+              </tbody>
             </table>
           </td>
         </tr>
@@ -71,7 +94,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -91,7 +115,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -111,7 +136,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -131,27 +157,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">Edit</button>
-                      </ng-template>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <th>Sunday</th>
-          <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of sun">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                        <div>Name: {{task.name}}</div>
-                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                        <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
