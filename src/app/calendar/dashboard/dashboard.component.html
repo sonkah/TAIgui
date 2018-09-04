@@ -1,15 +1,14 @@
 <nb-card>
   <nb-card-header>
-    Dashboard
-  </nb-card-header>
-  <nb-card-body>
     <div class="header-container">
       <div class="week-title">{{weekTitle}}</div>
-      <div>
+      <div class="nav-button-container">
         <button class="btn btn-success" (click)="previousWeek()">Previous</button>
         <button class="btn btn-success" (click)="nextWeek()">Next</button>
       </div>
     </div>
+  </nb-card-header>
+  <nb-card-body>
     <table _ngcontent-c35="" class="table table-bordered">
       <thead>
         <tr>
@@ -30,8 +29,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                        <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -51,8 +50,8 @@
                           <div>Name: {{task.name}}</div>
                           <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                           <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                          <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                          <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                          <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                           <div class="week-title">{{this.weekTitle}}</div>
                       </ng-template>
                   </td>
@@ -73,8 +72,8 @@
                           <div>Name: {{task.name}}</div>
                           <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                           <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                          <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                          <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                          <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                         </ng-template>
                     </td>
                 </tr>
@@ -94,8 +93,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                        <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -115,8 +114,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                        <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -136,8 +135,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                        <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
@@ -157,8 +156,8 @@
                         <div>Name: {{task.name}}</div>
                         <div>Date: {{task.date | date : "dd.MM.y" }}</div>
                         <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
+                        <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                        <button class="btn btn-danger " (click)="delete(task)">Delete</button>
                       </ng-template>
                     </td>
                   </tr>
