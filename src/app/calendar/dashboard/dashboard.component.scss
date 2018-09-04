@@ -24,9 +24,44 @@ table {
     width: 100%;
 }
 
+table tr td div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+table tr td div div {
+    width: 40px;
+}
+
+tbody tr th, .week-header {
+    width: 200px;
+}
 
 /*TASKS*/
 
 nb-checkbox {
     white-space: pre;
 }
+
+/*POPUP*/
+/*nb-popover {
+    padding: 15px !important;
+}
+
+nb-popover .btn-success {
+    margin-right: 10px !important;
+}
+
+ng-template #poopover {
+    padding: 15px !important;
+}
+nb-popover.top {
+    background-attachment: blue !important;
+}
+
+.popover {
+    padding: 15px !important;
+}
+*/

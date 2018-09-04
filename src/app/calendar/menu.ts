@@ -9,7 +9,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: "Log Out",
-    icon: 'nb-auth',
+    icon: 'nb-locked',
     link: '/logout',
     home: false,
   }
