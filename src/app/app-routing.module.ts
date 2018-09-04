@@ -9,13 +9,19 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 import { HomeComponent } from './home/home.component' ;
+import { UserInfoService } from './service/user-info.service'
+import { LogoutComponent } from './logout/logout.component'
 
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
-  { path: 'calendar', loadChildren: 'app/calendar/calendar.module#CalendarModule' },
+  { path: 'calendar', loadChildren: 'app/calendar/calendar.module#CalendarModule', canActivate: [UserInfoService] },
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
   },
   {
     path: 'auth',

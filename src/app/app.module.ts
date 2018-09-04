@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeModule } from './home/home.module';
+import { LogoutModule } from './logout/logout.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { HomeModule } from './home/home.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    LogoutModule,
 
     NgbModule.forRoot(),
     ThemeModule.forRoot(),

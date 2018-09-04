@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap  } from 'rxjs/operators';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
 import { UserInfo } from './userinfo';
@@ -8,12 +9,12 @@ import { UserInfo } from './userinfo';
 @Injectable({
   providedIn: 'root'
 })
-export class UserInfoService {
+export class UserInfoService implements CanActivate {
   httpOK = 200;
   private apiUrl = "/api";
   private userInfoUrl = this.apiUrl + "/user";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getUserInfo(): Observable<any> {
     return this.http.get<any>(this.userInfoUrl).pipe(
@@ -22,6 +23,20 @@ export class UserInfoService {
                      lastName:  res.userAuthentication.details.last_name };
         }),
         catchError(this.handleError('getUserInfo'))
+    );
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.getUserInfo().pipe(
+      map(userInfo => {
+        if (userInfo != null){
+          return true;
+        }
+        else {
+          this.router.navigate(['home']);
+          return false;
+        }
+      })
     );
   }
 

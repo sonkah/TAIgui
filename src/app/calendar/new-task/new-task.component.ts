@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, NgForm, Validators } from "@angular/forms";
+import { FormControl, FormGroup, NgForm, Validators, FormBuilder} from "@angular/forms";
 import { TaskService } from '../../service/task.service';
 import { TaskStatus } from '../../service/taskstatus';
 import { Task } from '../../service/task'
+import { DatepickerOptions } from 'ng2-datepicker';
 
 @Component({
   selector: 'new-task',
@@ -11,37 +12,25 @@ import { Task } from '../../service/task'
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent implements OnInit {
-  months = [
-    { name: "January", id: 0 },
-    { name: "February", id: 1},
-    { name: "March", id: 2 },
-    { name: "April", id: 3 },
-    { name: "May", id: 4 },
-    { name: "June", id: 5 },
-    { name: "July", id: 6 },
-    { name: "August", id: 7 },
-    { name: "September", id: 8 },
-    { name: "October", id: 9 },
-    { name: "November", id: 10 },
-    { name: "December", id: 11 },
-  ];
+  options: DatepickerOptions = {
+    firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
+    minDate: new Date(Date.now()), // Minimal selectable date
+  };
 
   createForm: FormGroup;
 
-  constructor(private taskService: TaskService, private router: Router) { }
+  constructor(private taskService: TaskService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-        this.createForm = new FormGroup({
-            "name": new FormControl("", []),
-            "year": new FormControl("", []),
-            "month": new FormControl("", []),
-            "day": new FormControl("", [])
+        this.createForm = this.formBuilder.group({
+            "name": [''],
+            "date": [new Date(Date.now())]
         });
   }
 
   onSubmit(): void {
     this.taskService.putTask({ id: 0, taskStatus: TaskStatus    .UNCHECKED, name: this.createForm.value["name"],
-                              date: new Date(this.createForm.value["year"], this.createForm.value["month"], this.createForm.value["day"]), userId: "", category: ""}).subscribe();
+                              date: this.createForm.value["date"], userId: "", category: ""}).subscribe();
     this.router.navigate(["/calendar/dashboard"]);
   }
 

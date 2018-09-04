@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgDatepickerModule } from 'ng2-datepicker';
 import { NewTaskComponent } from './new-task.component';
 import { ThemeModule } from '../../@theme/theme.module';
 
@@ -7,6 +8,7 @@ import { ThemeModule } from '../../@theme/theme.module';
   imports: [
     CommonModule,
     ThemeModule,
+    NgDatepickerModule
   ],
   declarations: [NewTaskComponent]
 })
