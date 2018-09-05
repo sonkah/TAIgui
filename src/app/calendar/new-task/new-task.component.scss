@@ -1,7 +1,16 @@
 nb-card {
-  height: 600px
+  height: 630px
 }
 
 ng-datepicker {
   z-index: 2;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.button-container button {
+  margin: 15px 15px 0 0;
 }

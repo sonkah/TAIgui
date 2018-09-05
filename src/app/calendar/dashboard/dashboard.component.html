@@ -1,19 +1,18 @@
 <nb-card>
   <nb-card-header>
-    Dashboard
-  </nb-card-header>
-  <nb-card-body>
     <div class="header-container">
       <div class="week-title">{{weekTitle}}</div>
-      <div>
+      <div class="nav-button-container">
         <button class="btn btn-success" (click)="previousWeek()">Previous</button>
         <button class="btn btn-success" (click)="nextWeek()">Next</button>
       </div>
     </div>
+  </nb-card-header>
+  <nb-card-body>
     <table _ngcontent-c35="" class="table table-bordered">
       <thead>
-        <tr>
-          <th>Weekdays</th>
+        <tr class="">
+          <th class="week-header">Weekdays</th>
           <th colspan="7">Tasks</th>
         </tr>
       </thead>
@@ -21,149 +20,120 @@
         <tr>
           <th>Sunday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of sun">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                        <div>Name: {{task.name}}</div>
-                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                        <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                      </ng-template>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
+            <div>
+              <div *ngFor="let task of sun">
+                <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
+                <ng-template #poopover>
+                  <div>Name: {{task.name}}</div>
+                  <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                  <div>Status: {{task.taskStatus}}</div>
+                  <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                  <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                </ng-template>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
           <th>Monday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                  <td *ngFor="let task of mon">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                          <div>Name: {{task.name}}</div>
-                          <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                          <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                          <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                          <div class="week-title">{{this.weekTitle}}</div>
-                      </ng-template>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <div *ngFor="let task of mon">
+                <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
+                <ng-template #poopover>
+                  <div>Name: {{task.name}}</div>
+                  <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                  <div>Status: {{task.taskStatus}}</div>
+                  <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                  <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                </ng-template>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
         <th>Tuesday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of tue">
-                        <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
-                        <ng-template #poopover>
-                          <div>Name: {{task.name}}</div>
-                          <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                          <div>Status: {{task.taskStatus}}</div>
-                          <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                          <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                        </ng-template>
-                    </td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+                <div *ngFor="let task of tue">
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
+                    <ng-template #poopover>
+                      <div>Name: {{task.name}}</div>
+                      <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                      <div>Status: {{task.taskStatus}}</div>
+                      <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                      <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                    </ng-template>
+                  </div>
+            </div>
           </td>
         </tr>
         <tr>
           <th>Wednesday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of wed">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                        <div>Name: {{task.name}}</div>
-                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                        <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                      </ng-template>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
+            <div>
+                <div *ngFor="let task of wed">
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
+                    <ng-template #poopover>
+                      <div>Name: {{task.name}}</div>
+                      <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                      <div>Status: {{task.taskStatus}}</div>
+                      <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                      <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                    </ng-template>
+                  </div>
+            </div>
           </td>
         </tr>
         <tr>
           <th>Thursday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of thu">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                        <div>Name: {{task.name}}</div>
-                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                        <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                      </ng-template>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
+            <div>
+                <div *ngFor="let task of thu">
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover"></nb-checkbox>
+                    <ng-template #poopover>
+                      <div>Name: {{task.name}}</div>
+                      <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                      <div>Status: {{task.taskStatus}}</div>
+                      <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                      <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                    </ng-template>
+                  </div>
+            </div>
           </td>
         </tr>
         <tr>
           <th>Friday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of fri">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                        <div>Name: {{task.name}}</div>
-                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                        <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                      </ng-template>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
+            <div>
+                <div *ngFor="let task of fri">
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
+                    <ng-template #poopover>
+                      <div>Name: {{task.name}}</div>
+                      <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                      <div>Status: {{task.taskStatus}}</div>
+                      <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                      <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                    </ng-template>
+                  </div>
+            </div>
           </td>
         </tr>
         <tr>
           <th>Saturday</th>
           <td>
-            <table>
-              <tbody>
-                <tr>
-                    <td *ngFor="let task of sat">
-                      <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
-                      <ng-template #poopover>
-                        <div>Name: {{task.name}}</div>
-                        <div>Date: {{task.date | date : "dd.MM.y" }}</div>
-                        <div>Status: {{task.taskStatus}}</div>
-                        <button class="btn btn-sucecss btn-tn" (click)="edit(task)">Edit</button>
-                        <button class="btn btn-danger btn-tn" (click)="delete(task)">Delete</button>
-                      </ng-template>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
+            <div>
+                <div *ngFor="let task of sat">
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbpopovermode="hover"></nb-checkbox>
+                    <ng-template #poopover>
+                      <div>Name: {{task.name}}</div>
+                      <div>Date: {{task.date | date : "dd.MM.y" }}</div>
+                      <div>Status: {{task.taskStatus}}</div>
+                      <button class="btn btn-success " (click)="edit(task)">Edit</button>
+                      <button class="btn btn-danger " (click)="delete(task)">Delete</button>
+                    </ng-template>
+                  </div>
+            </div>
           </td>
         </tr>
       </tbody>

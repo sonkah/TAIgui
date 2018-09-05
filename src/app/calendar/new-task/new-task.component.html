@@ -1,11 +1,11 @@
 <nb-card>
   <nb-card-header>
-    header
+    New Task
   </nb-card-header>
   <nb-card-body>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="name">Name: </label>
+                <label for="name">Enter name: </label>
                 <input
                         type="text"
                         class="form-control"
@@ -13,19 +13,17 @@
                         formControlName="name"
                         required>
             </div>
-            <div class="row">
+            <div>
+                <label for="date">Choose date: </label>
               <ng-datepicker formControlName="date" [options]="options"></ng-datepicker>
             </div>
-            <div class="row">
-              {{ createForm.value.date }}
-            </div>
-            <div class="row">
-            <div class="container-btn">
+            <div class="button-container">
+              <div class="container-btn">
                 <button class="btn btn-success" type="submit" id="savebutton" [disabled]="!createForm.valid">Save</button>
-            </div>
-            <div class="container-btn">
+              </div>
+              <div class="container-btn">
                 <button class="btn btn-danger" (click)="onCancel()" id="cancelbutton">Cancel</button>
-            </div>
+              </div>
             </div>
     </form>
   </nb-card-body>
