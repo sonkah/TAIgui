@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { TaskService } from '../../service/task.service';
@@ -6,6 +6,7 @@ import { Task } from '../../service/task';
 import { TaskStatus }  from '../../service/taskstatus';
 import { Params } from '@angular/router'
 import { THIS_EXPR } from '../../../../node_modules/@angular/compiler/src/output/output_ast';
+import { NbPopoverDirective } from '@nebular/theme';
 
 @Component({
   selector: 'dashboard',
@@ -14,8 +15,9 @@ import { THIS_EXPR } from '../../../../node_modules/@angular/compiler/src/output
 })
 export class DashboardComponent implements OnInit {
 
-  tasks: Task[];
+  @ViewChildren(NbPopoverDirective) poopovers !: QueryList<NbPopoverDirective>;
 
+  tasks: Task[];
     mon: Task[];
     tue: Task[];
     wed: Task[];
@@ -30,14 +32,14 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { 
+  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     /*this.route.queryParams.subscribe(params => {
       this.weekNumber = params['week'];
       this.year = params['year'];
-      }); 
+      });
 */
-   
+
   }
 
   ngOnInit() {
@@ -66,7 +68,7 @@ export class DashboardComponent implements OnInit {
   }
 
   divByDate(): void {
-    let currentWeekTasks: Task[] = this.tasks.filter(task => this.weekNumber === +formatDate(task.date, 'w', 'en') 
+    let currentWeekTasks: Task[] = this.tasks.filter(task => this.weekNumber === +formatDate(task.date, 'w', 'en')
                                                           && this.year === +formatDate(task.date, 'y', 'en'));
     this.mon = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Monday");
     this.tue = currentWeekTasks.filter(task => formatDate(task.date, 'EEEE', 'en') == "Tuesday");
@@ -81,6 +83,7 @@ export class DashboardComponent implements OnInit {
     this.tasks = this.tasks.filter(t => t.id !== task.id);
     this.divByDate();
     this.taskService.deleteTask(task.id).subscribe();
+    this.poopovers.forEach((item, _1, _2) => item.hide());
   }
 
   edit(task: Task) {
@@ -98,6 +101,16 @@ export class DashboardComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  checkboxChange(task: Task, value: any) {
+    if(value.returnValue == null) {
+      task.taskStatus = TaskStatus.CHECKED;
+    }
+    else {
+      task.taskStatus = TaskStatus.UNCHECKED;
+    }
+    this.taskService.updateTask(task).subscribe();
   }
 
   checkCancelled(task: Task) {
@@ -126,7 +139,7 @@ export class DashboardComponent implements OnInit {
   getDateOfWeek(week : number, year : number) {
     var day = (1 + (week - 1) * 7);
     var date = new Date(year, 0, day)
-    
+
     date.setDate(date.getDate() - date.getDay())
     return date;
   }
@@ -136,7 +149,7 @@ export class DashboardComponent implements OnInit {
     let path = `/calendar/dashboard/${this.weekDate.getFullYear()}/${formatDate(this.weekDate, 'w', 'en')}`;
     console.log(path);
     this.router.navigate([path]);
-    
+
   }
 
   previousWeek(){
