@@ -22,7 +22,7 @@
           <td>
             <div>
               <div *ngFor="let task of sun">
-                <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                 <ng-template #poopover>
                   <div>Name: {{task.name}}</div>
                   <div>Date: {{task.date | date : "dd.MM.y" }}</div>
@@ -39,7 +39,7 @@
           <td>
             <div>
               <div *ngFor="let task of mon">
-                <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                 <ng-template #poopover>
                   <div>Name: {{task.name}}</div>
                   <div>Date: {{task.date | date : "dd.MM.y" }}</div>
@@ -56,7 +56,7 @@
           <td>
             <div>
                 <div *ngFor="let task of tue">
-                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                     <ng-template #poopover>
                       <div>Name: {{task.name}}</div>
                       <div>Date: {{task.date | date : "dd.MM.y" }}</div>
@@ -73,7 +73,7 @@
           <td>
             <div>
                 <div *ngFor="let task of wed">
-                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                     <ng-template #poopover>
                       <div>Name: {{task.name}}</div>
                       <div>Date: {{task.date | date : "dd.MM.y" }}</div>
@@ -90,7 +90,7 @@
           <td>
             <div>
                 <div *ngFor="let task of thu">
-                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                     <ng-template #poopover>
                       <div>Name: {{task.name}}</div>
                       <div>Date: {{task.date | date : "dd.MM.y" }}</div>
@@ -107,7 +107,7 @@
           <td>
             <div>
                 <div *ngFor="let task of fri">
-                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                     <ng-template #poopover>
                       <div>Name: {{task.name}}</div>
                       <div>Date: {{task.date | date : "dd.MM.y" }}</div>
@@ -124,7 +124,7 @@
           <td>
             <div>
                 <div *ngFor="let task of sat">
-                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="checkboxChange(task, $event)"></nb-checkbox>
+                    <nb-checkbox [value]="checkStatus(task)" [nbPopover]="poopover" nbPopoverMode="hover" (change)="toggleTask(task)"></nb-checkbox>
                     <ng-template #poopover>
                       <div>Name: {{task.name}}</div>
                       <div>Date: {{task.date | date : "dd.MM.y" }}</div>

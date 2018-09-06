@@ -103,12 +103,12 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  checkboxChange(task: Task, value: any) {
-    if(value.returnValue == null) {
-      task.taskStatus = TaskStatus.CHECKED;
+  toggleTask(task: Task) {
+    if (task.taskStatus == TaskStatus.CHECKED) { // because of firefox - otherwise it should only check for return value
+      task.taskStatus = TaskStatus.UNCHECKED;
     }
     else {
-      task.taskStatus = TaskStatus.UNCHECKED;
+      task.taskStatus = TaskStatus.CHECKED;
     }
     this.taskService.updateTask(task).subscribe();
   }
